@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=360, initial-scale=1 , user-scalable = no">
+    <title>Document</title>
+ <style>
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+   display: block;
+  }
+  body{
+  background-color: #d8d8d8;
+  }
+  #row1 {
+   width: 360px;
+   height: 100vh;
+ //  display: block;
+   background-repeat: no-repeat;
+   background-size: 360px auto;
+   background-position:0 -23px;
+  }
+  #mu1 {
+  
+   width: 360px;
+   height: 640px;
+   background-repeat: no-repeat;
+   padding-top:55px;
+  }
+  #menuC{
+	height: 263px; width: 354px; margin: 3px 3px 0px; background-position: 358px 417px;
+  }
+  .mex{
+	background-color: rgb(40, 81, 167);
+    color: white;
+    font-size: 16px;
+    height: 29px;
+    line-height: 30px;
+    margin: 0 3px;
+    text-align: center;
+    width: 354px;
+　}
+  .menuC1{
+   background-position: 358px 452px;
+    background-size: 354px auto;
+    height: 263px;
+    margin: 3px 3px 0;
+    width: 354px;
+
+  }
+  .hide{
+   display: none;
+  }
+  .nowtimeClass{
+    background-color: black;
+    color: #ccc;
+    font-size: 14px;
+    left: 318px;
+    position: fixed;
+    text-align: right;
+    top: 6px;
+    width: 39px;
+	
+  }
+  #counttime{
+     background-color: #fda903;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+    height: 36px;
+    left: 64px;
+    position: fixed;
+    top: 559px;
+    width: 270px;
+    z-index: 19;vertical-align : middle;
+  }
+  #timecok{
+  vertical-align : middle;
+  margin-right:6px;margin-top: -5px;
+  }
+  .clickC:last-of-type{
+  margin-bottom: 88px;
+  }
+  #cf1{
+	background-color: rgba(0, 0, 0, 0.7);
+    height: 640px;
+    position: fixed;
+    top: 0;
+    width: 360px;
+    z-index: 3;
+  }
+  #cf2{
+  background-color: white; padding: 10px; width: 300px; margin: 280px auto;border-radius: 2px;
+  }
+  #chbtn{
+	background-color: rgb(253, 169, 3);
+    border-radius: 2px;
+    bottom: 10px;
+    color: white;
+    font-size: 24px;
+    height: 50px;
+    left: 5px;
+    line-height: 50px;
+    position: fixed;
+    text-align: center;
+    width: 350px;
+  }
+ </style>
+</head>
+<body>
+<div id="cf1" class="hide" ><div id="cf2"><table style="margin: 10px auto;"><tr><td style="font-size: 17px;">確認兌換優惠</td></tr><tr><td style="font-size: 15px; height: 80px; vertical-align: middle;">請確認已在麥當勞餐廳櫃檯，點<br>選「立即兌換」後，需於兩分鐘內出示<br>給結帳人員。</td></tr><tr><td style="font-size: 12px; text-align: right; color: #039789;"><span id="nochange">暫不兌換</span>　<span id="change">立即兌換</span></td></tr></table></div></div>
+<div id="row1" class="hide" ><img src="menu_head2.png" style="position: fixed; top: 0px;" onclick="hideSelect()" /><div id="counttime" class="hide" >優惠倒數　01 : 59</div><img class="hide" id="timebg" src="menu_foot_time.png" style="position: fixed; bottom: 0px; left: 0px;" /><div id="chbtn">兌換優惠</div></div>
+<div id="mu1" class=""><img src="menu_head.png" style="position: fixed; top: 0px;" /><img src="menu_foot2.png" style="position: fixed; bottom: 0px; left: 0px;" /></div>
+<script src="jquery-3.1.1.min.js"></script>
+<script>
+var ct = 60;
+var menuA= new Array("P_G021.jpg","unknow01.jpg","unknow02.jpg","P_G011.jpg","P_S050.jpg","P_S051.jpg","P_Award_061.jpg","P_G056.jpg","P_S065.jpg","P_G066.jpg","P_G058.jpg","P_G047.jpg","P_Award_044.jpg");
+for(var hh = 0;hh<menuA.length;hh++){
+$('<div  class="menuC1"></div>').css("background-image","url("+menuA[hh]+")").appendTo($("#mu1"));
+$('<div class="mex">期限：2016 年 06 月 09 日　尚餘：2 天 2 小時</div>').appendTo($("#mu1"));
+$('<img class="clickC" src="menu_foot.png" style="margin-left: 4px;" />').attr('databg',menuA[hh]).appendTo($("#mu1"));
+}
+
+ $(".clickC").click(function(){
+	
+	var act = $(this).attr('databg');
+	$("#mu1").addClass("hide");
+	$("#row1").removeClass().css("background-image", "url("+act+")" );
+	$("#timebg").addClass("hide");
+	$("#counttime").addClass("hide");
+	$("#chbtn").removeClass();
+	
+ });
+  $("#chbtn").click(function(){
+  $("#cf1").removeClass();
+  });
+  $("#change").click(function(){
+	  $("#cf1").addClass("hide");
+	  $("#chbtn").addClass("hide");
+	  ct = 59;
+	  $("#counttime").html('<img class="" id="timecok" src="clock.png" />'+"優惠倒數　01 : " +ct);
+	  $("#timebg").removeClass();
+	  $("#counttime").removeClass();
+  });
+  $("#nochange").click(function(){
+  $("#cf1").addClass("hide");
+  });
+ function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+ function hideSelect(){
+  $("#row1").addClass("hide");
+	$("#mu1").removeClass("hide");
+ }
+ function setNowTime(){
+  var nowT = new Date();
+  var hh = '0'+nowT.getHours();
+  var mm = '0'+nowT.getMinutes();
+  var nexT = addDays(nowT,2);
+  var MM = '0'+(nexT.getMonth()+1);
+  var dd = '0'+(nexT.getDate());
+  //var nowDiv = document.getElementById('nowtime');
+  //nowDiv.innerHTML = hh.slice(-2)+":"+mm.slice(-2);
+  //$("#nowtime2").html(hh.slice(-2)+":"+mm.slice(-2));
+  //var nowDivMenu = document.getElementById('mex');
+  $(".mex").html( "期限：2017 年 "+MM.slice(-2)+" 月 "+dd.slice(-2)+" 日　尚餘：2 天 "+(nowT.getHours()%9+1)+" 小時");
+ }
+
+ setInterval(function(){
+  var countDiv = document.getElementById('counttime');
+  ct = parseInt(ct,10) >0 ?("0"+(ct -1)).slice(-2):59;
+  countDiv.innerHTML = '<img class="" id="timecok" src="clock.png" />'+"優惠倒數　01 : " +ct;
+  setNowTime();
+ },1000);
+</script>
+</body>
+</html>
